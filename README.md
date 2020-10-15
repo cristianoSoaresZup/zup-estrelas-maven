@@ -1,2 +1,2 @@
-# zup-estrelas-maven
-Começamoms a usar o maven em nossas aulas
+# _zup-estrelas-Maven-carro_
+## banco de dados usado como aprendizado para utilização do Maven
