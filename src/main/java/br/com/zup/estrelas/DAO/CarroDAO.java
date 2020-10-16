@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.zup.estrelas.POJO.CarroPOJO;
+import br.com.zup.estrelas.POJO.Carro;
 import br.com.zup.estrelas.connectionFactory.ConnectionFactory;
 
 public class CarroDAO {
@@ -18,7 +18,7 @@ public class CarroDAO {
 		this.connection = ConnectionFactory.conexao();
 	}
 
-	public boolean cadastrarCarro(CarroPOJO carro) throws SQLException {
+	public boolean cadastrarCarro(Carro carro) throws SQLException {
 		String sql = "INSERT INTO estoque.carros" + "(placa, cor, modelo, marca, combustivel, ano_fabricacao)"
 				+ "VALUES" + "(?, ?, ?, ?, ?, ?)";
 		PreparedStatement inserindoNovoCarro = connection.prepareStatement(sql);
@@ -38,11 +38,11 @@ public class CarroDAO {
 		return true;
 	}
 
-	public static void whilePadraoBusca(ResultSet rs, List<CarroPOJO> carros) throws SQLException {
+	public static void whilePadraoBusca(ResultSet rs, List<Carro> carros) throws SQLException {
 
 		while (rs.next()) {
 
-			CarroPOJO carroPesquisado = new CarroPOJO();
+			Carro carroPesquisado = new Carro();
 
 			carroPesquisado.setPlaca(rs.getString("placa"));
 			carroPesquisado.setCor(rs.getString("cor"));
@@ -55,9 +55,9 @@ public class CarroDAO {
 		}
 	}
 
-	public CarroPOJO consultaCarroPelaPlaca(String placa) {
+	public Carro consultaCarroPelaPlaca(String placa) {
 
-		CarroPOJO carro = new CarroPOJO();
+		Carro carro = new Carro();
 
 		String sql = "SELECT c.* FROM estoque.carros c WHERE ?";
 
@@ -69,7 +69,7 @@ public class CarroDAO {
 			ResultSet rs = pesquisa.executeQuery();
 
 			while (rs.next()) {
-				CarroPOJO carroPesquisado = new CarroPOJO();
+				Carro carroPesquisado = new Carro();
 
 				carroPesquisado.setPlaca(rs.getString("placa"));
 				carroPesquisado.setCor(rs.getString("cor"));
@@ -88,9 +88,9 @@ public class CarroDAO {
 		return carro;
 	};
 
-	public List<CarroPOJO> listaTodosCarros() {
+	public List<Carro> listaTodosCarros() {
 
-		List<CarroPOJO> carros = new ArrayList<>();
+		List<Carro> carros = new ArrayList<>();
 
 		String sql = "SELECT * FROM estoque.carros ";
 
@@ -110,9 +110,9 @@ public class CarroDAO {
 		return carros;
 	}	
 	
-	public List<CarroPOJO> consultaCarroPelaCor(String cor) {
+	public List<Carro> consultaCarroPelaCor(String cor) {
 
-		List<CarroPOJO> carros = new ArrayList<>();
+		List<Carro> carros = new ArrayList<>();
 
 		String sql = "SELECT *.c FROM estoque.carros c WHERE cor = ?";
 
@@ -132,9 +132,9 @@ public class CarroDAO {
 		return carros;
 	}
 
-	public List<CarroPOJO> consultaCarroPeloModelo(String modelo) {
+	public List<Carro> consultaCarroPeloModelo(String modelo) {
 
-		List<CarroPOJO> carros = new ArrayList<>();
+		List<Carro> carros = new ArrayList<>();
 
 		String sql = "SELECT *.c FROM estoque.carros c WHERE modelo = ?";
 
@@ -154,9 +154,9 @@ public class CarroDAO {
 		return carros;
 	}
 
-	public List<CarroPOJO> consultaCarroPelaMarca(String marca) {
+	public List<Carro> consultaCarroPelaMarca(String marca) {
 
-		List<CarroPOJO> carros = new ArrayList<>();
+		List<Carro> carros = new ArrayList<>();
 
 		String sql = "SELECT *.c FROM estoque.carros c WHERE marca = ?";
 
@@ -176,9 +176,9 @@ public class CarroDAO {
 		return carros;
 	}
 
-	public List<CarroPOJO> consultaCarroPeloCombustuvel(String combustivel) {
+	public List<Carro> consultaCarroPeloCombustuvel(String combustivel) {
 
-		List<CarroPOJO> carros = new ArrayList<>();
+		List<Carro> carros = new ArrayList<>();
 
 		String sql = "SELECT *.c FROM estoque.carros c WHERE combustivel = ?";
 
@@ -198,9 +198,9 @@ public class CarroDAO {
 		return carros;
 	}
 
-	public List<CarroPOJO> consultaCarroPeloAno(int anoFabricacao) {
+	public List<Carro> consultaCarroPeloAno(int anoFabricacao) {
 
-		List<CarroPOJO> carros = new ArrayList<>();
+		List<Carro> carros = new ArrayList<>();
 
 		String sql = "SELECT *.c FROM estoque.carros c WHERE ano_fabricacao = ?";
 

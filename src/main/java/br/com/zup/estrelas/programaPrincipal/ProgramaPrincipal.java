@@ -3,7 +3,7 @@ package br.com.zup.estrelas.programaPrincipal;
 import java.util.Scanner;
 
 import br.com.zup.estrelas.DAO.CarroDAO;
-import br.com.zup.estrelas.POJO.CarroPOJO;
+import br.com.zup.estrelas.POJO.Carro;
 
 public class ProgramaPrincipal {
 
@@ -20,7 +20,7 @@ public class ProgramaPrincipal {
 			+ "\t|                                            |\n"
 			+ "\t|--------------------------------------------|\n";
 
-	public static void criaCarro(Scanner teclado, CarroPOJO veiculo) {
+	public static void criaCarro(Scanner teclado, Carro veiculo) {
 
 		System.out.println("Digite a placa do veiculo");
 		veiculo.setPlaca(teclado.nextLine());
@@ -45,7 +45,7 @@ public class ProgramaPrincipal {
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
 		CarroDAO carro = new CarroDAO();
-		CarroPOJO veiculo = new CarroPOJO();
+		Carro veiculo = new Carro();
 		int opcao = 0;
 
 		do {
